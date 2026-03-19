@@ -56,30 +56,39 @@ public class Sorting {
    // INSERTION SORT
    public static void insertionSort(int arr[]){
     for (int i = 1; i < arr.length; i++) {
-        int curr=i;
-        int j=i;
-        while (j>=0&&arr[j]<=arr[curr]) {
-            j--;
+        int curr=arr[i];
+        int prev =i-1;
+        while (prev>=0&&arr[prev]  >  curr) {
+            arr[prev+1]=arr[prev];
+            prev--;
             
         }
-        j++;
-        swap(arr, i, j);
+     
+      arr[prev+1]=curr;
     }
    }
    public static void main(String[] args) {
     int arr[]={1,6,4,2,5,434,1,26,7,45};
-    print(arr);
     System.out.println("BUBBLE SORT");
+    print(arr);
     bubbleSorting(arr);
     print(arr);
+
 
     System.out.println();
     System.out.println("SELECTION SORT");
     int a[]={1,6,4,2,5,434,1,26,7,45};
     print(a);
-    // selectionSort(a);
-    insertionSort(a);
+    selectionSort(a);
     print(a);
+
+
+    System.out.println();
+    System.out.println("INSERTION SORT");
+    int aR[]={1,6,4,2,5,434,1,26,7,45};
+    print(aR);
+    insertionSort(aR);
+    print(aR);
 
 
    }
