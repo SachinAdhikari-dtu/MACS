@@ -1,8 +1,13 @@
 public class BinarySearch {
+
+    //BINARY SEARCH 
+    // TIME COMPLEXITY 0(LOGN)
     public static int BinarySearch1(int arr[],int key){
         int s=0;
         int e= arr.length-1;
+        
         while(s<=e){
+            
             int m = s +(e-s)/2;
             if(arr[m]==key)return m;
             if(arr[m] > key){
@@ -10,11 +15,16 @@ public class BinarySearch {
             }else{
                 s=m+1;
             }
+            
         }return -1;
     }
 
+
+    // BINARY SEARCH USING RECURSION 
+      // TIME COMPLEXITY 0(LOGN)
     public static int BinarySearch2(int arr[],int key , int s , int e){
         if(s>e)return -1;
+        
         int m=s +(e-s)/2;
         if(arr[m]==key)return m;
             if(arr[m] > key){
@@ -22,6 +32,7 @@ public class BinarySearch {
             }else{
                 s=m+1;
             }
+        
     return BinarySearch2(arr,key,s,e);
         }
 
