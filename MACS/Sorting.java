@@ -1,6 +1,6 @@
 package MACS;
 //MACS DTU 
-// TASK 1)
+// TASK 1
 
 public class Sorting {
 
