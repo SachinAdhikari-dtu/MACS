@@ -1,0 +1,91 @@
+package KunalKushwa;
+import java.util.*;
+public class BinaryTree {
+    public static class Node{
+        int data;
+        Node left,right;
+        Node(int data){
+            this.data=data;
+        this.right=null;
+        this.left=null;
+        }
+    }
+
+    static Node root;
+
+    public static Node fiiler(Node root){
+           
+        root=new Node(1);
+        root.left=new Node(2);
+        root.right=new Node(3);
+          root.left.left=new Node(4);
+          root.left.right=new Node(5);
+        root.right.right=new Node(7);
+        root.right.left=new Node(6);
+return root;
+    }
+
+
+
+
+     
+    // DFS  DEPTH FIRST SEARCH 
+
+    //inoreder traversal  
+    public static void inorder(Node root){
+        if(root==null)return;
+        inorder(root.left);
+        System.out.print(root.data+"   ");
+        inorder(root.right);
+    }
+
+// post order traversal 
+ public static void postorder(Node root){
+        if(root==null)return;
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.data+"   ");
+
+    }
+
+
+    // pre order traversal 
+ public static void preorder(Node root){
+        if(root==null)return;
+        System.out.print(root.data+"   ");
+        preorder(root.left);
+        preorder(root.right);
+
+    }
+
+
+               
+
+// BFS  BREADTH FIRST SEARCH 
+
+    public static void levelOrederTraversal(Node root){
+        if(root==null)return;
+        Queue<Node> q=new LinkedList<>();
+        q.add(root);
+        
+        while(!q.isEmpty()){
+            int level=q.size();
+            for (int i = 0; i < level; i++) {
+                Node temp=q.poll();
+                System.out.print(temp.data +"  ");
+                if(temp.left!=null)q.offer(temp.left);
+                if(temp.right!=null)q.offer(temp.right);
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String[] args) {
+   root=fiiler(root);
+     
+  
+        inorder(root);
+        System.out.println();
+        levelOrederTraversal(root);
+    }
+    
+}
