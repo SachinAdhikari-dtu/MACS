@@ -1,0 +1,142 @@
+package MACS;
+
+public class LinkedList {
+    public static class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+
+    static Node head;
+    static Node tail;
+
+
+    public static void addFirst(int data){
+        if(head==null){
+            Node temp=new Node(data);
+            tail=head=temp;
+            return ;
+
+        }
+            Node temp=new Node(data);
+            temp.next=head;
+            head=temp;
+
+    }
+
+
+
+    public static void addLast(int data){
+         if(head==null){
+            Node temp=new Node(data);
+            tail=head=temp;
+            return ;
+
+        }
+           Node temp=new Node(data);
+           tail.next=temp;
+           tail=temp;
+    }
+
+
+
+   public static Node removeFirst() {
+    if (head == null) return null;          // empty list
+    if (head.next == null) {                // single element
+        tail = null;
+        Node temp = head;
+        head = null;
+        return temp;                        // return removed node
+    }
+    Node temp = head;                       // store old head
+    head = head.next;                       // move head forward
+    temp.next = null;                       // disconnect old head
+    return temp;                            // return removed node
+}
+
+
+
+
+  public static Node removeLast() {
+    if (head == null) return null;
+
+    if (head.next == null) {
+        Node removed = head;
+        head = null;
+        tail = null;
+        return removed;
+    }
+
+    Node temp = head;
+    while (temp.next.next != null) {
+        temp = temp.next;
+    }
+    Node removed = temp.next;
+    temp.next = null;
+    tail = temp;
+    return removed;
+}
+
+
+
+    public static int length(){
+        int ans=0;
+        Node temp=head;
+        while (temp!=null) {
+            temp=temp.next;
+            ans++;
+        }
+        return ans;
+    }
+
+
+
+    public static boolean empty(){
+        return head==null;
+    }
+
+
+
+    public static void print(){
+     Node temp=head;
+     System.out.println();
+     while (temp!=null) {
+        if(temp.next==null){
+            System.out.println(temp.data);
+            break;
+        }
+        System.out.print(temp.data+" --> ");
+        temp=temp.next;
+     }
+     System.out.println();
+    }
+
+
+
+    public static void main(String[] args) {
+
+        for (int i = 0; i < 10; i++) {
+            addFirst(i);
+        }
+
+
+        System.out.println(length());
+        System.out.println(head.data);
+        System.out.println(tail.data);
+        print();
+
+        removeFirst();
+        removeLast();
+
+        System.out.println(head.data);
+        System.out.println(tail.data);
+        print();
+    }
+
+
+
+    
+}
